@@ -2,7 +2,7 @@
 
 ## ENDPOINTS
 
-### /contacts
+### 1. /contacts
 
 1. Metodo 'GET':
 
