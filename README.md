@@ -2,12 +2,17 @@
 
 ## ENDPOINTS
 
-### 1. /contacts
+### 1. /contacts/*username*
 
 1. Metodo 'GET':
 
    Devuelve un array de todos los contactos.
-2. Metodo 'POST':
+
+```js
+// EJEMPLO
+fecth(`${TU_URL}/contacts/josemi`)
+```
+3. Metodo 'POST':
 
     Para **crear** un nuevo contacto. Es necesario enviar en el body un objeto con las siguientes propiedades.
    - email.
@@ -17,7 +22,7 @@
 
 ```js
 // EJEMPLO
-fecth(`${TU_URL}/contacts`, {
+fecth(`${TU_URL}/contacts/josemi`, {
   method: 'POST',
   headers: {
     "Content-Type": "application/json"
@@ -36,7 +41,7 @@ fecth(`${TU_URL}/contacts`, {
 
 ```js
 // EJEMPLO
-fecth(`${TU_URL}/contacts`, {
+fecth(`${TU_URL}/contacts/josemi`, {
   method: 'PUT',
   headers: {
     "Content-Type": "application/json"
@@ -55,7 +60,7 @@ fecth(`${TU_URL}/contacts`, {
 
 ```js
 // EJEMPLO
-fecth(`${TU_URL}/contacts`, {
+fecth(`${TU_URL}/contacts/josemi`, {
   method: 'DELETE',
   headers: {
     "Content-Type": "application/json"
