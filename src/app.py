@@ -36,11 +36,11 @@ def handle_invalid_usage(error):
 def sitemap():
     return generate_sitemap(app)
 
-@app.route("/contacts", methods=['GET', 'POST', 'DELETE', 'PUT'])
-def handle_contacts():
+@app.route("/contacts/<string:contact_owner>", methods=['GET', 'POST', 'DELETE', 'PUT'])
+def handle_contacts(contact_owner):
     # METODO GET
     if request.method == 'GET':
-        contacts = Contact.query.all()
+        contacts = Contact.query.filter_by(contact_owner = contact_owner).all()
         contacts = list(map(lambda contact: contact.serialize(), contacts))
         return jsonify(contacts), 200
 
@@ -63,7 +63,8 @@ def handle_contacts():
             email = email,
             full_name = full_name,
             phone_number = phone_number,
-            adress = adress
+            adress = adress,
+            contact_owner = contact_owner
             )
             db.session.add(new_contact)
             db.session.commit()
@@ -81,7 +82,7 @@ def handle_contacts():
 
         if id == None:
             return jsonify("Debe enviar el id del contacto a actaulizar"), 400
-        contact = Contact.query.filter_by(id = id).first()
+        contact = Contact.query.filter_by(id = id, contact_owner = contact_owner).first()
         if contact == None:
             return jsonify("El contacto no existe"), 400
 
@@ -108,7 +109,7 @@ def handle_contacts():
     if request.method == 'DELETE':
         body = request.json
         id = body.get('id', None)
-        contact = Contact.query.filter_by(id = id).first()
+        contact = Contact.query.filter_by(id = id, contact_owner = contact_owner).first()
         db.session.delete(contact)
         db.session.commit()
         return "Contacto eliminado", 200
