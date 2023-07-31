@@ -12,7 +12,7 @@
 // EJEMPLO
 fecth(`${TU_URL}/contacts/josemi`)
 ```
-3. Metodo 'POST':
+2. Metodo 'POST':
 
     Para **crear** un nuevo contacto. Es necesario enviar en el body un objeto con las siguientes propiedades.
    - email.
