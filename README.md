@@ -37,7 +37,7 @@ fecth(`${TU_URL}/contacts/josemi`, {
 ```
 3. Metodo 'PUT':
 
-   Para **actualizar** un contacto. Es necesario enviar **todos** los campos tal y como en el metodo 'POST', tanto los que quieren actualizar como los que no.
+   Para **actualizar** un contacto. Es necesario enviar **todos** los campos tal y como en el metodo 'POST', tanto los que quieren actualizar como los que no, asi como el 'id'.
 
 ```js
 // EJEMPLO
@@ -47,6 +47,7 @@ fecth(`${TU_URL}/contacts/josemi`, {
     "Content-Type": "application/json"
   },
   body: JSON.stringify({
+    "id": id,
     "email": email,
     "full_name": full_name,
     "phone_number": phone_number,
